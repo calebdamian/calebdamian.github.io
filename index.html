@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caleb Naranjo · Automation &amp; Software Architect</title>
+<meta name="description" content="Caleb Naranjo designs and builds AI-powered automations (n8n, Power Automate), chatbots and enterprise web apps (Spring Boot, Angular) for businesses worldwide.">
+<meta property="og:title" content="Caleb Naranjo · Automation &amp; Software Architect">
+<meta property="og:description" content="AI automations with n8n and Power Automate, AI agents and chatbots, and enterprise web apps with Spring Boot and Angular.">
+<meta property="og:image" content="https://calebdamian.pro/assets/og.jpg">
+<meta property="og:url" content="https://calebdamian.pro/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://calebdamian.pro/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a workflow canvas. Sections read left to right like nodes on a flow, joined by a thin connector line. */
+:root {
+  --paper: #f2f4f1;
+  --panel: #ffffff;
+  --ink: #14211f;
+  --muted: #55625f;
+  --line: #cfd8d4;
+  --teal: #0f6b5c;
+  --amber: #c9701a;
+  --node: #e4ece8;
+  --font-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Public Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --wrap: 72rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1716; --panel: #16201f; --ink: #e6eeeb; --muted: #9aaba6;
+    --line: #2a3936; --teal: #4fc2ab; --amber: #f0a253; --node: #1c2a28;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1716; --panel: #16201f; --ink: #e6eeeb; --muted: #9aaba6;
+  --line: #2a3936; --teal: #4fc2ab; --amber: #f0a253; --node: #1c2a28;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--teal); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+.wrap {
+  max-width: var(--wrap); margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; }
+h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+p { margin: 0; }
+.label {
+  font: 500 0.75rem/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.label b { color: var(--amber); font-weight: 500; }
+
+/* Header */
+.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.85rem; }
+.brand { font: 800 1.05rem/1 var(--font-display); color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.55rem; }
+.brand i { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px color-mix(in srgb, var(--teal) 20%, transparent); }
+.top nav { display: flex; gap: 1.4rem; font-size: 0.95rem; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--ink); }
+@media (max-width: 640px) { .top nav a:not(.go) { display: none; } }
+.go { color: var(--teal) !important; font-weight: 600; }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; align-items: center; padding-block: 4.5rem 3.5rem; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 3rem 2rem; gap: 2.5rem; } }
+.hero h1 { font-size: clamp(2.3rem, 5.2vw, 3.9rem); font-weight: 800; letter-spacing: -0.035em; margin-block: 1rem 1.25rem; }
+.hero h1 em { font-style: normal; color: var(--teal); }
+.hero .lede { font-size: 1.15rem; color: var(--muted); max-width: 34rem; }
+.ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.25rem; border-radius: 999px; font-weight: 600; font-size: 1rem; text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; font-family: inherit; }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn:hover { transform: translateY(-1px); }
+.meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-top: 1.75rem; }
+
+/* Hero flow diagram */
+.flow { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; }
+.flow-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; gap: 1rem; }
+.flow-head .run { font: 500 0.75rem var(--font-mono); color: var(--teal); display: flex; align-items: center; gap: 0.4rem; }
+.flow-head .run::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.flow svg { width: 100%; height: auto; display: block; }
+.flow .n rect { fill: var(--node); stroke: var(--line); }
+.flow .n.ai rect { stroke: var(--amber); stroke-width: 1.5; }
+.flow .n text { fill: var(--ink); font-family: var(--font-mono); font-size: 12px; }
+.flow .n text.k { fill: var(--muted); font-size: 10px; letter-spacing: 0.06em; }
+.flow .n text.v { fill: var(--teal); }
+.flow .n.ai text.v { fill: var(--amber); }
+.flow .wire { fill: none; stroke: var(--line); stroke-width: 2; }
+.flow .pulse { fill: var(--amber); }
+.flow .pulse { offset-rotate: 0deg; animation: travel 5.5s ease-in-out infinite; }
+@keyframes travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@media (prefers-reduced-motion: reduce) { .flow .pulse { animation: none; offset-distance: 100%; } }
+.flow-log { margin-top: 0.75rem; font: 400 0.78rem/1.6 var(--font-mono); color: var(--muted); border-top: 1px dashed var(--line); padding-top: 0.75rem; }
+.flow-log span { color: var(--teal); }
+
+/* Facts */
+.facts { border-block: 1px solid var(--line); background: var(--panel); }
+.facts .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-block: 1.6rem; gap: 1.5rem; }
+@media (max-width: 760px) { .facts .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.fact strong { display: block; font: 800 1.9rem/1 var(--font-display); letter-spacing: -0.02em; margin-bottom: 0.35rem; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 0.92rem; color: var(--muted); }
+
+section.block { padding-block: 5rem 1rem; }
+.sec-head { display: grid; gap: 0.8rem; max-width: 44rem; margin-bottom: 2.5rem; }
+.sec-head p { color: var(--muted); font-size: 1.08rem; }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+@media (max-width: 900px) { .services { grid-template-columns: minmax(0, 1fr); } }
+.svc { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.85rem; }
+.svc.main { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal); }
+.svc ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.98rem; display: grid; gap: 0.3rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.5rem; }
+.chip { font: 500 0.74rem/1 var(--font-mono); padding: 0.4rem 0.6rem; border-radius: 6px; background: var(--node); color: var(--ink); }
+
+/* Case studies */
+.case { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; padding-block: 2.75rem; border-top: 1px solid var(--line); }
+.case:nth-of-type(even) .case-img { order: 2; }
+@media (max-width: 900px) { .case { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; } .case:nth-of-type(even) .case-img { order: 0; } }
+.case-img { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.6rem; }
+.case-img a { display: block; }
+.case-img img { border-radius: 8px; background: #fff; }
+.case-img figcaption { font: 400 0.75rem var(--font-mono); color: var(--muted); padding: 0.6rem 0.2rem 0.1rem; }
+.case-body { display: grid; gap: 1rem; min-width: 0; }
+.case-body h3 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); }
+.case-body ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; }
+.case-body li::marker { color: var(--amber); }
+.role { font-size: 0.95rem; color: var(--muted); }
+.role b { color: var(--ink); font-weight: 600; }
+.case-links { display: flex; flex-wrap: wrap; gap: 1rem; font-weight: 600; font-size: 0.95rem; }
+.note { font-size: 0.9rem; color: var(--muted); margin-top: 1rem; max-width: 44rem; }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; position: relative; }
+@media (max-width: 900px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+.step { padding: 1.4rem 1.4rem 1.4rem 0; border-top: 2px solid var(--line); position: relative; display: grid; gap: 0.5rem; }
+.step::before { counter-increment: s; content: "0" counter(s); font: 500 0.8rem var(--font-mono); color: var(--amber); }
+.step::after { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--teal); }
+.step p { color: var(--muted); font-size: 0.97rem; }
+
+/* Code */
+.repos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 760px) { .repos { grid-template-columns: minmax(0, 1fr); } }
+.repo { display: grid; gap: 0.5rem; padding: 1.3rem 1.4rem; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--ink); }
+.repo:hover { border-color: var(--teal); }
+.repo .path { font: 500 0.82rem var(--font-mono); color: var(--teal); overflow-wrap: anywhere; }
+.repo p { color: var(--muted); font-size: 0.96rem; }
+
+/* Experience */
+.xp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+@media (max-width: 900px) { .xp { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; } }
+.xp div { display: grid; gap: 0.5rem; align-content: start; }
+.xp p { color: var(--muted); font-size: 0.98rem; }
+.stack { margin-top: 2.5rem; display: grid; gap: 0.9rem; }
+.stack-row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-bottom: 0.9rem; border-bottom: 1px dashed var(--line); }
+@media (max-width: 600px) { .stack-row { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; } }
+
+/* Contact */
+.contact { margin-top: 5rem; background: var(--ink); color: var(--paper); }
+.contact .wrap { padding-block: 4.5rem; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2.5rem; align-items: end; }
+@media (max-width: 900px) { .contact .wrap { grid-template-columns: minmax(0, 1fr); } }
+.contact h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+.contact p { color: color-mix(in srgb, var(--paper) 75%, var(--ink)); margin-top: 1rem; max-width: 34rem; }
+.contact .label { color: color-mix(in srgb, var(--paper) 65%, var(--ink)); }
+.reach { display: grid; gap: 0.9rem; }
+.reach a, .reach button.mail { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--paper) 25%, var(--ink)); color: var(--paper); text-decoration: none; font: 600 1rem var(--font-body); background: transparent; cursor: pointer; text-align: left; width: 100%; }
+.reach a:hover, .reach button.mail:hover { border-color: var(--paper); }
+.reach small { font: 400 0.78rem var(--font-mono); color: color-mix(in srgb, var(--paper) 65%, var(--ink)); }
+footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>Caleb Naranjo</a>
+    <nav aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#work">Case studies</a>
+      <a href="#code">Code</a>
+      <a href="#about">About</a>
+      <a class="go" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label"><b>●</b> Available for new projects · Quito, Ecuador · UTC−5</p>
+        <h1>I connect your tools so the <em>busywork runs itself.</em></h1>
+        <p class="lede">Full-stack engineer and solutions architect. I design AI-powered automations with n8n and Power Automate, build chatbots and AI agents, and ship enterprise web apps with Spring Boot and Angular.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#contact">Start a project</a>
+          <a class="btn" href="#work">See case studies</a>
+        </div>
+        <div class="meta">
+          <span class="label">English · Español</span>
+          <span class="label">Overlaps US business hours</span>
+        </div>
+      </div>
+
+      <figure class="flow" aria-label="Example automation: a customer complaint is captured, classified by AI, turned into a ticket and answered on WhatsApp">
+        <div class="flow-head">
+          <span class="label">workflow · complaint-intake</span>
+          <span class="run">active</span>
+        </div>
+        <svg viewBox="0 0 440 300" role="img" aria-hidden="true">
+          <path id="wire" class="wire" d="M120 52 H 230 Q 260 52 260 82 V 122 Q 260 150 230 150 H 210 Q 180 150 180 180 V 218 Q 180 248 210 248 H 320"/>
+          <g class="n"><rect x="10" y="22" width="110" height="60" rx="9"/><text class="k" x="22" y="42">TRIGGER</text><text x="22" y="60">Webhook</text><text class="v" x="22" y="74">new message</text></g>
+          <g class="n ai"><rect x="230" y="22" width="200" height="60" rx="9"/><text class="k" x="242" y="42">AI · CLASSIFY</text><text x="242" y="60">complaint → delivery</text><text class="v" x="242" y="74">confidence 0.92</text></g>
+          <g class="n"><rect x="10" y="120" width="200" height="60" rx="9"/><text class="k" x="22" y="140">SPRING BOOT API</text><text x="22" y="158">ticket #4821 created</text><text class="v" x="22" y="172">SLA 24h · auto-assigned</text></g>
+          <g class="n"><rect x="230" y="218" width="200" height="60" rx="9"/><text class="k" x="242" y="238">REPLY</text><text x="242" y="256">WhatsApp · same channel</text><text class="v" x="242" y="270">sent in 41 s</text></g>
+          <circle class="pulse" r="5" style="offset-path: path('M120 52 H 230 Q 260 52 260 82 V 122 Q 260 150 230 150 H 210 Q 180 150 180 180 V 218 Q 180 248 210 248 H 320');"/>
+        </svg>
+        <figcaption class="flow-log"><span>✓</span> 8 channels in, 1 inbox out. Simplified from the omnichannel case study below.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact"><strong>4+ yrs</strong><span>building software for banking, telecom, education and retail</span></div>
+      <div class="fact"><strong>9</strong><span>systems and modules taken to production in the last year</span></div>
+      <div class="fact"><strong>95%</strong><span>less deployment time after a CI/CD pipeline I set up</span></div>
+      <div class="fact"><strong>BPMN 2.0</strong><span>every process modeled before it is automated</span></div>
+    </div>
+  </div>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">What I do</p>
+        <h2>Three ways I can help your business</h2>
+        <p>Most projects start with one repetitive process that eats hours every week. I map it, automate it, and leave you with documentation your team can maintain.</p>
+      </div>
+      <div class="services">
+        <article class="svc main">
+          <p class="label"><b>Most requested</b></p>
+          <h3>AI automations and workflows</h3>
+          <p>Connect your forms, inbox, CRM, store and spreadsheets so data moves on its own, with AI steps that read, classify and draft replies.</p>
+          <ul>
+            <li>Lead capture, follow-ups and CRM sync</li>
+            <li>Email and document processing with AI</li>
+            <li>Approvals and alerts in Microsoft 365</li>
+          </ul>
+          <div class="chips"><span class="chip">n8n</span><span class="chip">Power Automate</span><span class="chip">OpenAI / Azure AI</span><span class="chip">Webhooks &amp; APIs</span></div>
+        </article>
+        <article class="svc">
+          <p class="label">Chatbots</p>
+          <h3>AI chatbots and agents</h3>
+          <p>Assistants that answer from your own documents and data, hand off to a human when needed, and live where your customers already are.</p>
+          <ul>
+            <li>Website, WhatsApp and Microsoft Teams bots</li>
+            <li>Retrieval over your docs (RAG with pgvector)</li>
+            <li>Agents that call your APIs and tools</li>
+          </ul>
+          <div class="chips"><span class="chip">Azure AI Foundry</span><span class="chip">Bot Framework</span><span class="chip">pgvector</span><span class="chip">ManyChat</span></div>
+        </article>
+        <article class="svc">
+          <p class="label">Web apps</p>
+          <h3>Enterprise web applications</h3>
+          <p>Internal tools, dashboards and customer portals with secure logins, roles, reports and clean REST APIs, built to grow.</p>
+          <ul>
+            <li>Admin panels, CRMs and ticketing systems</li>
+            <li>JWT / OAuth2 security and role-based access</li>
+            <li>Docker deployment on Azure, AWS or Google Cloud</li>
+          </ul>
+          <div class="chips"><span class="chip">Java · Spring Boot</span><span class="chip">Angular</span><span class="chip">.NET</span><span class="chip">PostgreSQL · Oracle</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Case studies</p>
+        <h2>Real systems, designed end to end</h2>
+        <p>Four projects I architected for real clients. The client names and code stay confidential; the architecture and documentation are public on GitHub.</p>
+      </div>
+
+      <article class="case">
+        <figure class="case-img">
+          <a href="assets/01-omnichannel-complaints.webp" target="_blank" rel="noopener"><img src="assets/01-omnichannel-complaints.webp" width="1600" height="961" loading="lazy" alt="Architecture diagram: eight complaint channels flow through n8n and Power Automate into an AI classifier, a Spring Boot backend and an Angular admin panel"></a>
+          <figcaption>Architecture · click to enlarge</figcaption>
+        </figure>
+        <div class="case-body">
+          <p class="label"><b>n8n</b> · Power Automate · AI · Spring Boot · Angular</p>
+          <h3>AI-powered omnichannel complaint management</h3>
+          <p>A multi-location consumer brand received complaints in eight places: a web form, social media, CRM surveys, QR forms in stores, three shared mailboxes, Google reviews, the phone and paper. I designed one platform that brings them all into a single ticket inbox.</p>
+          <ul>
+            <li>n8n captures each channel through webhooks, an IMAP listener and a reviews poller that runs every 15 minutes.</li>
+            <li>An AI step decides whether a message is a complaint and assigns a category. Above 80% confidence, the ticket is routed automatically.</li>
+            <li>Spring Boot handles tickets, SLAs, JWT roles and real-time alerts; Angular shows KPIs and exports PDF and Excel reports.</li>
+            <li>Replies go back through n8n to the same channel the customer used.</li>
+          </ul>
+          <p class="role"><b>My role:</b> solutions architect, process analysis and integration design.</p>
+          <div class="case-links"><a href="https://github.com/calebdamian/omnichannel-complaint-management" target="_blank" rel="noopener">Architecture on GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure class="case-img">
+          <a href="assets/04-order-to-invoice.webp" target="_blank" rel="noopener"><img src="assets/04-order-to-invoice.webp" width="1600" height="961" loading="lazy" alt="Diagram: a paid Shopify order triggers a Cloudflare Worker that requests an electronic invoice and sends it through ManyChat on WhatsApp, with HubSpot as CRM"></a>
+          <figcaption>Architecture · click to enlarge</figcaption>
+        </figure>
+        <div class="case-body">
+          <p class="label"><b>Shopify</b> · Cloudflare Workers · WhatsApp · HubSpot</p>
+          <h3>Automatic invoicing and WhatsApp delivery for a Shopify store</h3>
+          <p>Every paid order had to produce a legally valid electronic invoice. I designed an integration that handles it from payment to the customer's phone, with no one touching it.</p>
+          <ul>
+            <li>Shopify's <code>order/paid</code> webhook triggers a small serverless Cloudflare Worker that maps the order and calls the e-invoicing API.</li>
+            <li>The provider signs the invoice, gets it authorized by the tax authority and returns the PDF.</li>
+            <li>ManyChat sends the invoice on WhatsApp, and HubSpot keeps the contact for CRM and email marketing.</li>
+          </ul>
+          <p class="role"><b>My role:</b> integration architecture and serverless middleware.</p>
+          <div class="case-links"><a href="https://github.com/calebdamian/ecommerce-order-to-invoice" target="_blank" rel="noopener">Architecture on GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure class="case-img">
+          <a href="assets/02-incident-reporting.webp" target="_blank" rel="noopener"><img src="assets/02-incident-reporting.webp" width="1600" height="961" loading="lazy" alt="BPMN-based architecture for digital incident reporting with severity-based alerts, evidence upload and escalation"></a>
+          <figcaption>Architecture · click to enlarge</figcaption>
+        </figure>
+        <div class="case-body">
+          <p class="label"><b>BPMN 2.0</b> · Spring Boot · Spring Security · Workflow</p>
+          <h3>Digital incident reporting, from BPMN model to Spring Boot</h3>
+          <p>A company with several sites tracked safety incidents on paper. I modeled the whole process in BPMN 2.0, from detection and severity assessment to evidence, notifications and legal review, and turned it into a layered Spring Boot architecture.</p>
+          <ul>
+            <li>Staff fill in a digital form and upload photos, videos and documents.</li>
+            <li>Alerts go out automatically, to different people depending on severity.</li>
+            <li>Overdue cases escalate on their own, and reports are generated on a schedule.</li>
+            <li>Spring Security with JWT, OAuth2 and role-based access.</li>
+          </ul>
+          <p class="role"><b>My role:</b> business process modeling and software architecture.</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure class="case-img">
+          <a href="assets/03-cloud-deployment.webp" target="_blank" rel="noopener"><img src="assets/03-cloud-deployment.webp" width="1600" height="961" loading="lazy" alt="Deployment diagram on Google Cloud: Caddy, Next.js, self-hosted Supabase and PostgreSQL in Docker, with push notifications to Android and web"></a>
+          <figcaption>Architecture · click to enlarge</figcaption>
+        </figure>
+        <div class="case-body">
+          <p class="label"><b>Google Cloud</b> · Docker · Next.js · Supabase · PWA</p>
+          <h3>Cloud deployment for a multi-site web and Android platform</h3>
+          <p>I designed and documented the production deployment of a platform used across several sites, both as an installable web app and as an Android app.</p>
+          <ul>
+            <li>One Google Cloud VM runs everything in Docker, with Caddy as the only public entry point and automatic HTTPS.</li>
+            <li>Next.js serves the interface and API; self-hosted Supabase provides auth, storage and realtime.</li>
+            <li>PostgreSQL row-level security keeps each site's data separate, and scheduled jobs escalate unresolved issues.</li>
+            <li>Push notifications through Firebase (Android) and Web Push (browser).</li>
+          </ul>
+          <p class="role"><b>My role:</b> cloud architecture, deployment and handover documentation.</p>
+          <div class="case-links"><a href="https://github.com/calebdamian/multisite-operations-gcp" target="_blank" rel="noopener">Architecture on GitHub ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">How we work together</p>
+        <h2>From a messy process to a system you own</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Map</h3><p>A short call to understand the process, the tools you already pay for and what "done" looks like.</p></div>
+        <div class="step"><h3>Design</h3><p>A BPMN diagram and architecture you approve before any build starts, with a fixed scope and price.</p></div>
+        <div class="step"><h3>Build</h3><p>Working increments you can test early, with progress updates in your time zone.</p></div>
+        <div class="step"><h3>Hand over</h3><p>Documentation, a walkthrough video and support while your team takes it over.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="code">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Open source</p>
+        <h2>Code you can read</h2>
+        <p>Full projects with public source, so you can see how I structure an API, a frontend and a data pipeline.</p>
+      </div>
+      <div class="repos">
+        <a class="repo" href="https://github.com/calebdamian/inventoryapp" target="_blank" rel="noopener">
+          <span class="path">calebdamian/inventoryapp</span>
+          <h3>Inventory management system</h3>
+          <p>Angular front end over two independent .NET 8 REST APIs for products and stock movements, with MySQL, pagination, filters and Swagger.</p>
+          <div class="chips"><span class="chip">.NET 8</span><span class="chip">Angular</span><span class="chip">EF Core</span><span class="chip">MySQL</span></div>
+        </a>
+        <a class="repo" href="https://github.com/calebdamian/sighc-backend" target="_blank" rel="noopener">
+          <span class="path">calebdamian/sighc-backend</span>
+          <h3>Medical records system · API</h3>
+          <p>Modular NestJS API for patients, clinical entries, follow-ups and prescriptions, secured with bcrypt, JWT and route guards.</p>
+          <div class="chips"><span class="chip">NestJS</span><span class="chip">TypeORM</span><span class="chip">JWT</span><span class="chip">Swagger</span></div>
+        </a>
+        <a class="repo" href="https://github.com/calebdamian/sighc-frontend-v2" target="_blank" rel="noopener">
+          <span class="path">calebdamian/sighc-frontend-v2</span>
+          <h3>Medical records system · Web app</h3>
+          <p>Angular app where clinic staff manage patients and records, with an HTTP interceptor for tokens and guarded routes.</p>
+          <div class="chips"><span class="chip">Angular</span><span class="chip">RxJS</span><span class="chip">Guards</span><span class="chip">Interceptors</span></div>
+        </a>
+        <a class="repo" href="https://github.com/CralosMejia/UDLAICBS0003202310_PROYECTOINTEGRADOR_GRUPO6" target="_blank" rel="noopener">
+          <span class="path">ETL + Power BI · team project</span>
+          <h3>School performance analytics</h3>
+          <p>Python ETL from an operational database into a MySQL data warehouse, answering four management questions with Power BI dashboards.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">Data warehouse</span><span class="chip">Power BI</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">About</p>
+        <h2>Hi, I'm Caleb</h2>
+        <p>I'm a software engineer from Quito, Ecuador. I've worked inside banks, a telecom, a university and a growing retail brand, which taught me to translate business problems into systems that people actually use. Since 2022 I've also worked freelance, helping clinics and small businesses with software, cloud servers and automation.</p>
+      </div>
+      <div class="xp">
+        <div><p class="label">Retail &amp; e-commerce</p><h3>Architecture and automation</h3><p>Took 5 systems and 4 modules to production in one year, including a CRM, e-commerce and n8n automations. Managed 15 technology projects with Agile.</p></div>
+        <div><p class="label">Banking</p><h3>Transactional enterprise apps</h3><p>Java, Spring Boot, Jakarta EE and Angular applications for banks, Oracle and SQL Server databases, and Jenkins CI/CD that cut deployment time by 95%.</p></div>
+        <div><p class="label">Education &amp; telecom</p><h3>AI, chatbots and data</h3><p>Chatbots with Bot Framework and Power Virtual Agents, Azure proofs of concept, Power Platform workflows, and Python ETL pipelines for data governance teams.</p></div>
+      </div>
+      <div class="stack">
+        <div class="stack-row"><span class="label">Automation</span><span>n8n · Power Automate · Power Platform · AWS Lambda · Cloudflare Workers · Webhooks</span></div>
+        <div class="stack-row"><span class="label">AI</span><span>Azure AI Foundry · OpenAI · RAG with pgvector · Bot Framework · ManyChat</span></div>
+        <div class="stack-row"><span class="label">Backend</span><span>Java · Spring Boot · .NET · NestJS · Python · REST APIs</span></div>
+        <div class="stack-row"><span class="label">Frontend</span><span>Angular · React · Next.js · TypeScript</span></div>
+        <div class="stack-row"><span class="label">Data &amp; cloud</span><span>PostgreSQL · Oracle · SQL Server · MySQL · Azure · Google Cloud · AWS · Docker</span></div>
+        <div class="stack-row"><span class="label">Process</span><span>BPMN 2.0 · Agile · B.Sc. Software Engineering (Universidad de Las Américas, 2024)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <p class="label">Contact</p>
+        <h2>Have a process that eats your week?</h2>
+        <p>Tell me what you're doing by hand today and which tools you use. I'll reply within one business day with how I'd automate it.</p>
+      </div>
+      <div class="reach">
+        <button class="mail" type="button" id="copy-email" data-email="dev@calebdamian.pro">dev@calebdamian.pro <small id="copy-state">copy email</small></button>
+        <a href="mailto:dev@calebdamian.pro">Send an email <small>opens your mail app</small></a>
+        <a href="https://www.linkedin.com/in/caleb-naranjo" target="_blank" rel="noopener">LinkedIn <small>caleb-naranjo ↗</small></a>
+        <a href="https://github.com/calebdamian" target="_blank" rel="noopener">GitHub <small>calebdamian ↗</small></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Caleb Naranjo · Quito, Ecuador</span>
+    <span>Client names are kept confidential.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("copy-email").addEventListener("click", function () {
+    var btn = this, state = document.getElementById("copy-state");
+    var done = function (msg) { state.textContent = msg; setTimeout(function () { state.textContent = "copy email"; }, 2000); };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(btn.dataset.email).then(function () { done("copied"); }, function () { done("select and copy"); });
+    } else { done("select and copy"); }
+  });
+</script>
+</body>
+</html>
